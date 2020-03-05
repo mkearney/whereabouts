@@ -14,3 +14,5 @@ LazyData: true
 RoxygenNote: 7.0.2
 Imports: 
     data.table
+URL: https://github.com/mkearney/whereabouts
+BugReports: https://github.com/mkearney/whereabouts/issues
