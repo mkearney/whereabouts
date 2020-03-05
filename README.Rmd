@@ -1,0 +1,51 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+options(width = 125, datatable.print.topn = 10, digits = 3, scipen = 5)
+```
+
+# whereabouts
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of whereabouts is to ...
+
+## Installation
+
+You can install the released version of whereabouts from Github with:
+
+``` r
+remotes::install_github("mkearney/whereabouts")
+```
+
+## Basic Use
+
+The package converts a character vector of location strings (like the 'location'
+column returned by Twitter's API) into a data frame with geopolitical information.
+
+```{r}
+## load whereabouts package
+library(whereabouts)
+
+## search for verified tweets
+vrf_twt <- rtweet::search_tweets("filter:verified", n = 500)
+
+## get the whereabouts of those tweets
+w <- where(vrf_twt)
+
+## preview geopolitical data and location field in returned data
+w[!is.na(geoname_country), 
+  .(location, geoname_name, geoname_region, geoname_country_name,
+    geoname_lat, geoname_long)]
+```
